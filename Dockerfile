@@ -1,4 +1,4 @@
-FROM node:16.20.1-alpine as build
+FROM node:16.20.1-alpine as node
 
 WORKDIR /app
 
@@ -14,4 +14,4 @@ RUN ng build --configuration=production
 
 FROM nginx:latest
 
-COPY --from=build app/dist/aftas-angular /usr/share/nginx/html
+COPY --from=node app/dist/app /usr/share/nginx/html
