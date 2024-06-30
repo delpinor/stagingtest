@@ -13,7 +13,9 @@ COPY . .
 RUN ng build --configuration=production
 
 FROM nginx
-COPY nginx.conf.template /etc/nginx/templates/default.conf.template
+
+RUN mkdir /etc/nginx/templates
+COPY nginx.conf.template /etc/nginx/templates
 
 
 COPY --from=node app/dist/app /usr/share/nginx/html
