@@ -1,0 +1,32 @@
+name: Deploy to staging
+
+on:
+  pull_request:
+    branches: [ staging ]
+    types:
+      - closed
+
+env:
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  APP_NAME: ${{ secrets.HEROKU_APP_NAME_STAGE }}
+
+jobs:
+  deploy:
+    if: ${{ github.event.pull_request.merged }}
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Deploy to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME_STAGE }}
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+          process_type: web
+
