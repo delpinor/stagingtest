@@ -29,4 +29,3 @@ jobs:
           dockerfile_name: Dockerfile
           docker_options: "--no-cache"
           process_type: web
-
