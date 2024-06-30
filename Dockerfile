@@ -12,8 +12,8 @@ COPY . .
 
 RUN ng build --configuration=production
 
-FROM nginx:1.27.0-alpine-slim
+FROM nginx
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
-COPY default.conf.template /etc/nginx/templates
 
 COPY --from=node app/dist/app /usr/share/nginx/html
