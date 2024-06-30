@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  version: string = "0.0.1"
+  version: string = "0.0.2"
 
 }
