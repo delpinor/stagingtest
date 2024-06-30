@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   version: string = "0.0.4"
-
 }
