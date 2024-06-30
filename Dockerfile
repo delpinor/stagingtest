@@ -12,7 +12,7 @@ COPY . .
 
 RUN ng build --configuration=production
 
-FROM nginx:latest
+FROM nginx:1.27.0-alpine-slim
 
 COPY default.conf.template /etc/nginx/templates
 
