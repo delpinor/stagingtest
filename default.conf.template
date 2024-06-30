@@ -1,1 +1,3 @@
-listen       ${PORT};
+server {
+    listen            ${PORT};
+}
