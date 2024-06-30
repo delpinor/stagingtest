@@ -13,9 +13,9 @@ env:
 jobs:
   deploy:
     if: ${{ github.event.pull_request.merged }}
-    name: Deploy to staging
+    name: Deploy to production
     runs-on: ubuntu-latest
-    environment: staging
+    environment: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
