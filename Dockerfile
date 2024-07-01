@@ -14,7 +14,7 @@ RUN ng build --configuration=production
 
 FROM nginx:latest
 
-COPY ./dist/app /usr/share/nginx/html
+COPY app/dist/app /usr/share/nginx/html
 
 
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
