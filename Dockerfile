@@ -12,10 +12,12 @@ COPY . .
 
 RUN ng build --configuration=production
 
-FROM nginx
+FROM nginx:latest
 
-RUN mkdir /etc/nginx/templates
-COPY nginx.conf.template /etc/nginx/templates
+COPY ./dist/app /usr/share/nginx/html
 
 
-COPY --from=node app/dist/app /usr/share/nginx/html
+COPY default.conf.template /etc/nginx/conf.d/default.conf.template
+
+
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
